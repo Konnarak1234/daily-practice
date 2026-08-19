@@ -12,6 +12,7 @@ class ExpensesList extends StatelessWidget {
   final List<Expense> registerExpenses;
 
   final void Function(Expense expense) onRemoveExpense;
+
   @override
   Widget build(context) {
     return ListView.builder(
