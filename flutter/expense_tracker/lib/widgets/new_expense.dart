@@ -147,6 +147,7 @@ class _NewExpenseState extends State<NewExpense> {
                   });
                 },
               ),
+              // similar to Sizedbox, but instead it take as much space as parent allow
               const Spacer(),
               TextButton(
                 onPressed: () {
