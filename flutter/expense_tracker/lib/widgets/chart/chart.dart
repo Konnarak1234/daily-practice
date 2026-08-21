@@ -69,7 +69,6 @@ class Chart extends StatelessWidget {
           ),
           const SizedBox(height: 12),
           Row(
-            mainAxisAlignment: MainAxisAlignment.end,
             children: buckets
                 .map(
                   (bucket) => Expanded(
