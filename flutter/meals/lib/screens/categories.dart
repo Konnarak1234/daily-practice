@@ -23,9 +23,7 @@ class CategoriesScreen extends StatelessWidget {
 
   @override
   Widget build(context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('hello')),
-      body: GridView(
+    return GridView(
         padding: const EdgeInsets.all(24),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
@@ -43,7 +41,6 @@ class CategoriesScreen extends StatelessWidget {
               },
             ),
         ],
-      ),
-    );
+      );
   }
 }
