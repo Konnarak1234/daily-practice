@@ -6,13 +6,8 @@ import 'package:meals/screens/categories.dart';
 import 'package:meals/screens/filters.dart';
 import 'package:meals/screens/meals.dart';
 import 'package:meals/widgets/main_drawer.dart';
+import 'package:meals/providers/filters_provider.dart';
 
-const kInitailFilter = {
-    Filter.glutenFree : false,
-    Filter.lactoseFree : false,
-    Filter.vegetarian : false,
-    Filter.vegan : false,
-};
 
 
 class TabsScreen extends ConsumerStatefulWidget {
@@ -24,7 +19,6 @@ class TabsScreen extends ConsumerStatefulWidget {
 
 class _TabsScreenState extends ConsumerState<TabsScreen> {
   int _selectedPageIndex = 0;
-  var _selectFilter = kInitailFilter;
 
   void _selectPage(int index) {
     setState(() {
@@ -32,16 +26,12 @@ class _TabsScreenState extends ConsumerState<TabsScreen> {
     });
   }
 
-  void _setScreen(String identifier) async {
+  void _setScreen(String identifier) {
     Navigator.of(context).pop();
     if (identifier == 'filters') {
-      final result = await Navigator.of(
+      Navigator.of(
         context,
-      ).push<Map<Filter, bool>>(MaterialPageRoute(builder: (ctx) => FiltersScreen(currentFilter: _selectFilter,)));
-
-      setState(() {
-        _selectFilter = result ?? kInitailFilter;
-      });
+      ).push<Map<Filter, bool>>(MaterialPageRoute(builder: (ctx) => FiltersScreen()));
     }  
   }
 
@@ -53,14 +43,17 @@ class _TabsScreenState extends ConsumerState<TabsScreen> {
 
   @override
   Widget build(context) {
+    final favoriteMeals = ref.watch(favoriteMealsProvider);
+    final activeFilters = ref.watch(filtersProvider);
+
     final availableMeal = dummyMeals.where((meal) {
-      if(_selectFilter[Filter.glutenFree]! && !meal.isGlutenFree){
+      if(activeFilters[Filter.glutenFree]! && !meal.isGlutenFree){
         return false;
-      } else if(_selectFilter[Filter.lactoseFree]! && !meal.isLactoseFree){
+      } else if(activeFilters[Filter.lactoseFree]! && !meal.isLactoseFree){
         return false;
-      } else if(_selectFilter[Filter.vegetarian]! && !meal.isVegetarian){
+      } else if(activeFilters[Filter.vegetarian]! && !meal.isVegetarian){
         return false;
-      } else if(_selectFilter[Filter.vegan]! && !meal.isVegan){
+      } else if(activeFilters[Filter.vegan]! && !meal.isVegan){
         return false;
       }
 
@@ -73,7 +66,6 @@ class _TabsScreenState extends ConsumerState<TabsScreen> {
     );
     var pageTitle = 'Categories';
     if (_selectedPageIndex == 1) {
-      final favoriteMeals = ref.watch(favoriteMealsProvider);
       activePage = MealsScreen(
         meals: favoriteMeals,
       );
