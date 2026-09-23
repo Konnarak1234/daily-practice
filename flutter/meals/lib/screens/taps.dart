@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meals/data/dummy_data.dart';
+import 'package:meals/models/meal.dart';
 import 'package:meals/providers/favorites_provider.dart';
+import 'package:meals/providers/meals_provider.dart';
 import 'package:meals/screens/categories.dart';
 import 'package:meals/screens/filters.dart';
 import 'package:meals/screens/meals.dart';
@@ -12,6 +14,7 @@ import 'package:meals/providers/filters_provider.dart';
 
 class TabsScreen extends ConsumerStatefulWidget {
   const TabsScreen({super.key});
+  
 
   @override
   ConsumerState<TabsScreen> createState() => _TabsScreenState();
@@ -19,6 +22,7 @@ class TabsScreen extends ConsumerStatefulWidget {
 
 class _TabsScreenState extends ConsumerState<TabsScreen> {
   int _selectedPageIndex = 0;
+ 
 
   void _selectPage(int index) {
     setState(() {
@@ -31,7 +35,7 @@ class _TabsScreenState extends ConsumerState<TabsScreen> {
     if (identifier == 'filters') {
       Navigator.of(
         context,
-      ).push<Map<Filter, bool>>(MaterialPageRoute(builder: (ctx) => FiltersScreen()));
+      ).push(MaterialPageRoute(builder: (ctx) => FiltersScreen()));
     }  
   }
 
@@ -43,23 +47,11 @@ class _TabsScreenState extends ConsumerState<TabsScreen> {
 
   @override
   Widget build(context) {
-    final favoriteMeals = ref.watch(favoriteMealsProvider);
-    final activeFilters = ref.watch(filtersProvider);
+    print('taps screen is rebuild');
+    final favoriteMeal = ref.watch(favoriteMealsProvider);
+    final filterMeals = ref.watch(filterMealsProvider);
 
-    final availableMeal = dummyMeals.where((meal) {
-      if(activeFilters[Filter.glutenFree]! && !meal.isGlutenFree){
-        return false;
-      } else if(activeFilters[Filter.lactoseFree]! && !meal.isLactoseFree){
-        return false;
-      } else if(activeFilters[Filter.vegetarian]! && !meal.isVegetarian){
-        return false;
-      } else if(activeFilters[Filter.vegan]! && !meal.isVegan){
-        return false;
-      }
-
-      return true;
-
-    }).toList();
+    final availableMeal = filterMeals;
 
     Widget activePage = CategoriesScreen(
       availableMeal: availableMeal,
@@ -67,7 +59,7 @@ class _TabsScreenState extends ConsumerState<TabsScreen> {
     var pageTitle = 'Categories';
     if (_selectedPageIndex == 1) {
       activePage = MealsScreen(
-        meals: favoriteMeals,
+        meals: favoriteMeal,
       );
       pageTitle = 'Your Favorites';
     }

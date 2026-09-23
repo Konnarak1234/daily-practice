@@ -26,6 +26,7 @@ class MealsScreen extends StatelessWidget {
 
   @override
   Widget build(context) {
+    print('meals screen is rebuild');
     Widget content = ListView.builder(
       itemCount: meals.length,
       itemBuilder:
