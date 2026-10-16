@@ -4,10 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="sandbox1.js"></script>
 </head>
 <body>
     
-    <script src="sandbox1.js"></script>
+    <!-- 
+        Three(3) we need to know about primary method of importing js to html file: (without using props keyword ="defer" in script tag)
+        1. each js script will download to webpage in order, and each will execute immedietly after finish install
+        2. all js scripts import to webpage, will execute in the same domain: { ...script1, script2, script3 }
+        3. js will block the execution of webpage, if we use script tag before html body, and without "defer" keyword 
+    -->
+    
     <script src="sandbox2.js"></script>
 </body>
 </html>
