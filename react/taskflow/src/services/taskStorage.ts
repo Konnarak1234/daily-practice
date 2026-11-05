@@ -54,5 +54,6 @@ export function loadTasks(): Task[] {
 
 export function saveTasks(tasks: Task[]): void {
   // Allow the caller to handle quota or security errors.
+  // localStorage.setItem() will return exception, when the local storage exceed limit (5MB)
   localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
 }

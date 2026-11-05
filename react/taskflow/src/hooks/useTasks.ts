@@ -3,6 +3,7 @@ import type { Task, TaskInput } from "../types/task";
 import { loadTasks, saveTasks } from "../services/taskStorage";
 
 export function useTasks() {
+
   // Lazy initialization reads storage only when state initializes.
   const [tasks, setTasks] = useState<Task[]>(loadTasks);
 
@@ -20,9 +21,11 @@ export function useTasks() {
     }
   }, [tasks]);
 
+  // function use for adding task
   function addTask(input: TaskInput): void {
     const title = input.title.trim();
 
+    // checking title is nullable  after trim()
     if (!title) return;
 
     const newTask: Task = {

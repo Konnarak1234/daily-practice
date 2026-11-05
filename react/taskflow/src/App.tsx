@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 
 type product = {
   id: number,
@@ -31,11 +32,24 @@ function App() {
 
 function ListOfProducts( { products } : { products : product[] }) {
 
+  const [narak, setNarak] = useState<String>('');
+
+  useEffect(() => {
+    console.log('hello world');
+  }, []);
+
+  function changeNarakValue(input : string) {
+    console.log('hello');
+    setNarak(input);
+  }
+
   return (
+    
     <ul>
       {
+        
         products.map((product: product) => (
-          <li key={product.id}>{product.name}</li>
+          <li key={product.id} onClick={() => {changeNarakValue(product.name)}}>{narak} {product.name}</li>
         ))
       }
     </ul>
