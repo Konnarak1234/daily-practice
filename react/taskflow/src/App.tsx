@@ -18,6 +18,8 @@ import "./App.css";
 
 export default function App() {
   // The custom hook owns the application's task data.
+
+  // destruction compose's functions, react state, from useTasks()
   const {
     tasks,
     storageError,
@@ -37,6 +39,7 @@ export default function App() {
 
   // Derived data: no additional state is necessary.
   const visibleTasks = tasks.filter((task) => {
+    // matchesStatus, return true for task that match filter status
     const matchesStatus =
       filter === "all" ||
       (filter === "active" && !task.completed) ||
@@ -50,11 +53,14 @@ export default function App() {
 
     return matchesStatus && matchesSearch;
   });
+  
 
   function handleSaveTask(input: TaskInput) {
+    // user is editing the task
     if (editingTask) {
       updateTask(editingTask.id, input);
       setEditingTask(null);
+    // if not save the task
     } else {
       addTask(input);
     }
@@ -69,6 +75,7 @@ export default function App() {
 
     deleteTask(id);
 
+    // also clear the editing task that stuck in input form
     if (editingTask?.id === id) {
       setEditingTask(null);
     }
