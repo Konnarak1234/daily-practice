@@ -18,6 +18,7 @@ import "./App.css";
 
 export default function App() {
   // The custom hook owns the application's task data.
+  const baseUrl = import.meta.env.VITE_API_BASE_URL;
 
   // destruction compose's functions, react state, from useTasks()
   const {
