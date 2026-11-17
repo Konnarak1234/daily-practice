@@ -1,5 +1,6 @@
 
 import java.util.Scanner;
+import module4.*;
 public class Main {
 
     public static void main(String[] args) {
@@ -25,7 +26,6 @@ public class Main {
         o.println("name: " + name);
         o.println("age: " + age);
         o.println("height: " + height);
-
 
 
     }
