@@ -1,5 +1,4 @@
 package module4;
-
 public class Car {
     String brand;
     String color;

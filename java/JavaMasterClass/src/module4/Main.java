@@ -1,10 +1,16 @@
 package module4;
 
+import module4.abstraction.Circle;
+import java.awt.*;
+
 public class Main {
     public static void main(String[] args) {
-        BankAccount account =
-                new BankAccount("Narak", 1000.0);
 
-        System.out.println(account.getBalance());
+        Circle circle = new Circle(5);
+
+        circle.display();
+
+        System.out.println(circle.calculateArea());
     }
 }
+
