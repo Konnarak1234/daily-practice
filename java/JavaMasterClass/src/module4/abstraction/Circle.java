@@ -4,6 +4,10 @@ public class Circle extends Shape {
 
     private double radius;
 
+    public int addAnything() {
+        return ++Shape.anything;
+    }
+
     public Circle(double radius) {
         this.radius = radius;
     }

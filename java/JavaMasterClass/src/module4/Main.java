@@ -1,16 +1,25 @@
 package module4;
 
-import module4.abstraction.Circle;
+import module4.abstraction.*;
 import java.awt.*;
 
 public class Main {
     public static void main(String[] args) {
 
-        Circle circle = new Circle(5);
+        PaymentMethod payment1 = new KHQRPayment();
 
-        circle.display();
+        Circle c1 = new Circle(2);
+        Circle c2 = new Circle(2);
 
-        System.out.println(circle.calculateArea());
+        module4.abstraction.Shape.anything = 2;
+
+        c1.addAnything();
+
+        System.out.println(PaymentMethod.narak);
+
+
+
+
     }
 }
 
