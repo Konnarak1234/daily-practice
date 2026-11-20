@@ -11,9 +11,9 @@ const STORAGE_KEY : string = "activities";
 function isActivity(input : unknown) : input is Activity {
     if(!input || typeof input !== "object" || Array.isArray(input)) return false;
 
-    const objectInput = input as  Record<string, unknown>;
+    const objectInput = input as Record<string, unknown>;
 
-    
+
     return (
        typeof objectInput.id === "string" &&
        typeof objectInput.title === "string" &&
@@ -52,7 +52,7 @@ export function loadActivities() : Activity[] {
 
 
     } catch(e) {
-        console.log(`Can't load user activity ${e}`)
+        console.log(`Can't load user activity ${e}`);
         return [];
     }
 }
