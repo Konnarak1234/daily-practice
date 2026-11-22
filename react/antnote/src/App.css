@@ -8,7 +8,91 @@
   padding: 0 20px 48px;
 }
 
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
 
-body {
-    color: red;
+.stat-card,
+.panel{
+  background : white;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding : 24px;
+}
+
+.stat-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.stat-card span {
+  color: #64748b;
+}
+
+.stat-card strong {
+  font-size: 28px;
+}
+
+.act-form {
+  display: grid;
+  
+  /* reason we use grid here is to control gap of form-field element inside */
+  gap: 16px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.form-field label{
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.form-field input,
+.form-field textarea,
+.form-field select {
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  padding : 14px;
+  color: #172033;
+}
+
+.form-action {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+button {
+  border: 1px solid #cbd5e1;
+  background: white;
+  color: #334155;
+  border-radius: 8px;
+  padding: 10px 14px;
+}
+
+.primary-button {
+  background: #166534;
+  border-color: #166534;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr)
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }

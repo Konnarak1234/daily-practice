@@ -12,5 +12,5 @@ export type Activity = { // Record<String, any>
 
 export type ActFilter = "all" | "progress" | "done";
 
-export type inputActivity = Pick<Activity, "title" | "description" | "priority">;
+export type ActivityInput = Pick<Activity, "title" | "description" | "priority">;
 
