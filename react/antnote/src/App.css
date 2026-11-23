@@ -71,7 +71,7 @@
   color: #172033;
 }
 
-.form-action {
+.form-actions {
   display: flex;
   align-items: center;
   gap: 12px;
@@ -109,7 +109,62 @@ button {
 
 
 .activity-item {
-  padding: 8px;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 18px;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+}
+
+.activity-item > input {
+  margin-top: 6px;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.activity-content {
+  flex: 1;
+}
+
+.activity-content{
+  display: flex;
+  flex-direction: column;
+}
+
+.activity-content h3{
+  margin: 0 0 8px;
+}
+
+.activity-meta,
+.activity-actions {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  font-size: 13px;
+}
+
+.priority {
+  padding: 4px 9px;
+  border-radius: 6px;
+  text-transform: capitalize;
+  font-weight: 600;
+}
+
+.priority-low {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.priority-medium {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.priority-high {
+  background: #fee2e2;
+  color: #991b1b;
 }
 
 

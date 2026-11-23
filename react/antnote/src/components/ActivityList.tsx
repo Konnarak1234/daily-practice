@@ -10,6 +10,13 @@ type ActivityListProps = {
 }
 
 export function ActivityList(props : ActivityListProps) {
+
+    if(props.activities.length === 0) {
+        return <p>
+            No Activity to do today!
+        </p>
+    }
+
     return <section className="activity-list">
         {props.activities.map(
             (action) => 
