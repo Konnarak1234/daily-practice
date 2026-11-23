@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import type { Activity, ActPriority, inputActivity } from "../types/activity";
+import type { Activity, ActPriority, ActivityInput } from "../types/activity";
 import { loadActivities, storeActivities } from "../services/activityService";
 
 
@@ -29,7 +29,7 @@ export default function useActivities() {
         }
     }, [activities]);
     
-    function createActivity(input: inputActivity) : void {
+    function createActivity(input: ActivityInput) : void {
         // validate inputActivity : but becuase every input field, are string and doesn't strictly require to be specific, so we might not check
         // if yes : insert it into old activity
         // if no : print(error), store error
@@ -44,6 +44,7 @@ export default function useActivities() {
                     id : crypto.randomUUID(),
                     ...input,
                     created: Date.now().toString(),
+                    isCompleted: false,
                 } as Activity
             ];
 
@@ -51,7 +52,7 @@ export default function useActivities() {
             setActivity(newListOfActs);
     }   
 
-    function updateActivity(id : string, input : inputActivity) {
+    function updateActivity(id : string, input : ActivityInput) {
         // validate input
         // map throught old activities array
         // update inputActivity

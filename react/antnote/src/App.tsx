@@ -4,7 +4,7 @@ import { ActivityList }  from "./components/ActivityList";
 import { ActivityStats }  from "./components/ActivityStats";
 
 
-import { actionList } from "./data/actions";
+// import { actionList } from "./data/actions";
 import useActivities from "./hooks/useActivities";
 import { useState } from "react";
 import type { Activity, ActivityInput } from "./types/activity";
@@ -13,10 +13,9 @@ import type { Activity, ActivityInput } from "./types/activity";
 import "./App.css";
 
 
-
 export default function App() {
 
-     const {
+    const {
         activities,
         createActivity,
         updateActivity,
@@ -41,7 +40,6 @@ export default function App() {
 
         {/* activity statistic */}
         
-
         <main className="dashboard">
 
             <ActivityStats actions={activities}/>
@@ -51,6 +49,7 @@ export default function App() {
 
                 {/* action form */}
                 <ActivityForm 
+                    key={editActivity?.id ?? "new-task"}
                     initialActivity={editActivity ?? undefined}
                     onSubmit={handleSaveTask}
                     onCancel={
