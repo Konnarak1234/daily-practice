@@ -1,69 +1,69 @@
-import Image from "next/image";
-import styles from "./page.module.css";
 
-export default function Home() {
+import Link from "next/link";
+
+export default function HomePage() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>
-            To get started, edit the{" "}
-            <code className={styles.code}>page.tsx</code> file.
-          </h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <main className="container">
+      <section
+        style={{
+          paddingTop: "100px",
+          paddingBottom: "60px",
+        }}
+      >
+        <p className="muted">
+          Welcome to my blog
+        </p>
+
+        <h1
+          style={{
+            fontSize: "3rem",
+            lineHeight: 1.2,
+            marginTop: "12px",
+            maxWidth: "650px",
+          }}
+        >
+          Ideas, experiences, and thoughts worth sharing.
+        </h1>
+
+        <p
+          className="muted"
+          style={{
+            marginTop: "20px",
+            maxWidth: "550px",
+          }}
+        >
+          A personal blog powered by Next.js,
+          TypeScript, and Supabase.
+        </p>
+
+        <div style={{ marginTop: "28px" }}>
+          <Link
+            href="/login"
+            style={{
+              display: "inline-block",
+              backgroundColor: "#2563eb",
+              color: "#ffffff",
+              padding: "12px 22px",
+              borderRadius: "8px",
+            }}
           >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+            Get Started
+          </Link>
         </div>
-      </main>
-    </div>
+      </section>
+
+      <section
+        style={{
+          borderTop: "1px solid #e2e8f0",
+          paddingTop: "30px",
+        }}
+      >
+        <h2>Latest Articles</h2>
+
+        <p className="muted" style={{ marginTop: "8px" }}>
+          Your published blog posts will appear here.
+        </p>
+      </section>
+    </main>
   );
 }
