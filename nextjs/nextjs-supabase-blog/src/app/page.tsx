@@ -2,6 +2,7 @@
 import Link from "next/link";
 import styles from "./page.module.css";
 
+
 export default function HomePage() {
   return (
     <main className="container">
@@ -31,7 +32,6 @@ export default function HomePage() {
 
       <section className={styles.articles}>
         <h2>Latest Articles</h2>
-
         <p className={styles.emptyMessage}>
           Your published blog posts will appear here.
         </p>
