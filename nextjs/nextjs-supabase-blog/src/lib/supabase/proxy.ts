@@ -1,6 +1,7 @@
 
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
+import type { Database } from "@/lib/types/database";
 
 export async function updateSession(request: NextRequest) {
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -17,7 +18,7 @@ export async function updateSession(request: NextRequest) {
     request,
   });
 
-  const supabase = createServerClient(
+  const supabase = createServerClient<Database>(
     supabaseUrl,
     supabasePublishableKey,
     {
@@ -27,17 +28,14 @@ export async function updateSession(request: NextRequest) {
         },
 
         setAll(cookiesToSet, headers) {
-          // Update cookies available to downstream server code.
           cookiesToSet.forEach(({ name, value }) => {
             request.cookies.set(name, value);
           });
 
-          // Rebuild the response with the updated request.
           supabaseResponse = NextResponse.next({
             request,
           });
 
-          // Send refreshed cookies to the browser.
           cookiesToSet.forEach(
             ({ name, value, options }) => {
               supabaseResponse.cookies.set(
@@ -48,7 +46,6 @@ export async function updateSession(request: NextRequest) {
             }
           );
 
-          // Preserve Supabase cache-related headers.
           Object.entries(headers).forEach(([key, value]) => {
             supabaseResponse.headers.set(key, value);
           });
@@ -57,9 +54,7 @@ export async function updateSession(request: NextRequest) {
     }
   );
 
-  // Refresh and verify the user's authentication claims.
   await supabase.auth.getClaims();
 
-  // Return the response containing refreshed cookies.
   return supabaseResponse;
 }

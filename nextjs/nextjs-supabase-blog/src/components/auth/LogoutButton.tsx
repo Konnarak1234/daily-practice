@@ -17,6 +17,8 @@ export default function LogoutButton() {
     try {
       const supabase = createClient();
 
+      // inform the supabase to terminate the correlate user session
+      // supabase response with update token
       const { error } = await supabase.auth.signOut();
 
       if (error) {

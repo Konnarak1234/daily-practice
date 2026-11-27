@@ -1,9 +1,17 @@
 
-import Link from "next/link";
+import type { Metadata } from "next";
+import { getPosts } from "@/lib/posts";
+import PostCard from "@/components/posts/PostCard";
 import styles from "./page.module.css";
 
+export const metadata: Metadata = {
+  title: "Home",
+  description: "Explore the latest articles on My Blog.",
+};
 
-export default function HomePage() {
+export default async function HomePage() {
+  const posts = await getPosts();
+
   return (
     <main className="container">
       <section className={styles.hero}>
@@ -16,25 +24,38 @@ export default function HomePage() {
         </h1>
 
         <p className={styles.description}>
-          A personal blog powered by Next.js,
-          TypeScript, and Supabase.
+          Explore articles about technology,
+          programming, and personal experiences.
         </p>
-
-        <div className={styles.actions}>
-          <Link
-            href="/login"
-            className={styles.primaryButton}
-          >
-            Get Started
-          </Link>
-        </div>
       </section>
 
       <section className={styles.articles}>
-        <h2>Latest Articles</h2>
-        <p className={styles.emptyMessage}>
-          Your published blog posts will appear here.
-        </p>
+        <div className={styles.sectionHeading}>
+          <h2>Latest Articles</h2>
+
+          <span className={styles.postCount}>
+            {posts.length} articles
+          </span>
+        </div>
+
+        {posts.length === 0 ? (
+          <div className={styles.emptyState}>
+            <h3>No articles yet</h3>
+
+            <p>
+              Check back later for new blog posts.
+            </p>
+          </div>
+        ) : (
+          <div className={styles.postGrid}>
+            {posts.map((post) => (
+              <PostCard
+                key={post.id}
+                post={post}
+              />
+            ))}
+          </div>
+        )}
       </section>
     </main>
   );

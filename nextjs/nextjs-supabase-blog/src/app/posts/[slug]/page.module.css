@@ -1,0 +1,50 @@
+
+.article {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 60px 0 100px;
+}
+
+.backLink {
+  display: inline-block;
+  color: #2563eb;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.backLink:hover {
+  text-decoration: underline;
+}
+
+.header {
+  margin-top: 40px;
+  padding-bottom: 35px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.date {
+  color: #64748b;
+  font-size: 0.85rem;
+}
+
+.title {
+  margin-top: 14px;
+  color: #0f172a;
+  font-size: 2.8rem;
+  line-height: 1.2;
+  letter-spacing: -0.045em;
+}
+
+.content {
+  margin-top: 35px;
+}
+
+@media (max-width: 600px) {
+  .article {
+    padding-top: 40px;
+  }
+
+  .title {
+    font-size: 2.1rem;
+  }
+}

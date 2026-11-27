@@ -1,60 +1,85 @@
 
 .hero {
-  padding: 100px 0 60px;
+  padding: 85px 0 65px;
 }
 
 .eyebrow {
-  color: #64748b;
-  font-size: 0.95rem;
+  color: #2563eb;
+  font-size: 0.9rem;
+  font-weight: 600;
 }
 
 .title {
-  max-width: 650px;
-  margin-top: 12px;
+  max-width: 720px;
+  margin-top: 14px;
   font-size: 3rem;
   line-height: 1.2;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.05em;
+  color: #0f172a;
 }
 
 .description {
-  max-width: 550px;
+  max-width: 580px;
   margin-top: 20px;
   color: #64748b;
-}
-
-.actions {
-  margin-top: 28px;
-}
-
-.primaryButton {
-  display: inline-block;
-  padding: 12px 22px;
-  background-color: #2563eb;
-  color: #ffffff;
-  border-radius: 8px;
-  transition: background-color 0.2s ease;
-}
-
-.primaryButton:hover {
-  background-color: #1d4ed8;
+  font-size: 1.05rem;
 }
 
 .articles {
-  padding-top: 30px;
+  padding: 35px 0 80px;
   border-top: 1px solid #e2e8f0;
 }
 
-.emptyMessage {
+.sectionHeading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.sectionHeading h2 {
+  font-size: 1.5rem;
+  letter-spacing: -0.03em;
+}
+
+.postCount {
+  color: #64748b;
+  font-size: 0.85rem;
+}
+
+.postGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.emptyState {
+  padding: 50px 20px;
+  border: 1px dashed #cbd5e1;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.emptyState h3 {
+  font-size: 1.15rem;
+}
+
+.emptyState p {
   margin-top: 8px;
   color: #64748b;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
   .hero {
-    padding-top: 70px;
+    padding-top: 60px;
   }
 
   .title {
-    font-size: 2.2rem;
+    font-size: 2.3rem;
+  }
+
+  .postGrid {
+    grid-template-columns: 1fr;
   }
 }
